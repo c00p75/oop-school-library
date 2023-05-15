@@ -26,5 +26,16 @@ class Student < Person
   end
 end
 
-p1 = Student.new(21, 'Bill', true, 'LT2')
-puts p1.can_use_services?, p1.play_hooky
+class Teacher < Person
+  def initialize(age, name, parent_permission, specialization)
+    super(age, name, parent_permission)
+    @specialization = specialization
+  end
+
+  def can_use_services? 
+    true
+  end
+end
+
+p1 = Teacher.new(41, 'Bill', true, 'Math')
+puts p1.can_use_services?
