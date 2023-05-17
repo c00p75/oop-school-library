@@ -10,6 +10,3 @@ class Student < Person
     '¯(ツ)/¯'
   end
 end
-
-p1 = Student.new(41, 'LT1')
-puts p1.can_use_services?, p1.age, p1.name, p1.parent_permission
