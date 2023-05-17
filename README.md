@@ -1,10 +1,4 @@
-<a name="readme-top"></a>
-<div align="center">
-
-  <img src="https://github.com/rbhatt1999/rbhatt1999/blob/bd8bb27a9814ab74d6f920a1027494a65610a24d/logo.png" alt="logo" width="140"  height="auto" />
-  <br/>
-
-  <h3><b>School Library</b></h3>
+<h1><b>School Library</b></h1>
 </div>
 
 # 📗 Table of Contents
