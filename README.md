@@ -1,4 +1,4 @@
-<h1><b>School Library</b></h1>
+<h1><b>OOP School Library</b></h1>
 </div>
 
 # 📗 Table of Contents
