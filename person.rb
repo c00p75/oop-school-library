@@ -1,6 +1,4 @@
-require_relative 'nameable'
-
-class Person < Nameable
+class Person
   attr_reader :id, :parent_permission
   attr_accessor :name, :age
 
@@ -9,7 +7,6 @@ class Person < Nameable
     @name = name
     @parent_permission = parent_permission
     @id = Random.rand(1..100)
-    super
   end
 
   def can_use_services?
@@ -18,10 +15,6 @@ class Person < Nameable
 
   def of_age?
     @age >= 18
-  end
-
-  def correct_name
-    @name
   end
 
   private :of_age?
