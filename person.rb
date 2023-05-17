@@ -9,7 +9,7 @@ class Person < Nameable
     @name = name
     @parent_permission = parent_permission
     @id = Random.rand(1..100)
-    super
+    super()
   end
 
   def can_use_services?
