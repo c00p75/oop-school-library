@@ -6,4 +6,9 @@ class Book
     @author = author
     @rentals = []
   end
+
+  def add_rentals(rental)
+    @rentals << rental
+    rental.book = self
+  end
 end

@@ -25,5 +25,10 @@ class Person < Nameable
     @name
   end
 
+  def add_rentals(rental)
+    @rentals << rental
+    rental.person = self
+  end
+
   private :of_age?
 end
