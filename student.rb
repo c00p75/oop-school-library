@@ -12,7 +12,7 @@ class Student < Person
   # function to modify classroom object passed in parameters upon initialization.
   def classroom=(classroom)
     @classroom = classroom # set classroom instance variable to new classroom object passed.
-    # Uppdate classroom.students array to have current student oblect
+    # Uppdate Classroom.Students array to have current student oblect
     classroom.students.push(self) unless classroom.students.include?(self)
   end
 
