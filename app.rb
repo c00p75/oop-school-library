@@ -13,14 +13,14 @@ class App
 
   def list_books
     puts
-    puts '1) List all books.'
+    puts '1) List all books'
     puts 'No books have been added.' if @all_books.empty?
     @all_books.each { |book| puts "[Book] Title: \"#{book.title}\", Author: #{book.author}" }
   end
 
   def list_people
     puts
-    puts '2) List all people.'
+    puts '2) List all people'
     puts 'No people have been added.' if @all_people.empty?
     @all_people.each do |person|
       puts "[#{person.class.name}] Name: #{person.name}, ID: #{person.id} Age: #{person.age}"
@@ -29,7 +29,7 @@ class App
 
   def list_rentals
     puts
-    puts '3) List all rentals.'
+    puts '3) List all rentals'
     return puts 'No rentals have been added.' if @all_rentals.empty?
 
     print 'Enter person ID: '
