@@ -107,8 +107,6 @@ class App
     else
       puts 'Invalid input. Try again.'
     end
-
-    save_people_to_json
   end
 
   def add_student(name, age)
@@ -127,8 +125,8 @@ class App
 
     book = Book.new(title, author)
     @all_books << book
+
     puts "Book #{title} created successfully."
-    save_books_to_json
   end
 
   def create_rental
@@ -159,6 +157,15 @@ class App
     @all_rentals << rental
     
     puts 'Rental created successfully'
+  end
+
+  def save_data_to_json
+    Dir.mkdir(DATA_DIR) unless Dir.exist?(DATA_DIR)
+
+    save_books_to_json
+    save_people_to_json
     save_rentals_to_json
-  end   
+  
+    puts 'Data saved successfully.'
+  end
 end
