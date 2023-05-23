@@ -177,6 +177,7 @@ class App
     people_data = @all_people.map do |person|
       {
         'type' => person.class.name,
+        'id' => person.id, # Include the person ID
         'age' => person.age,
         'name' => person.name,
         'parent_permission' => person.is_a?(Student) ? person.parent_permission : nil,
@@ -193,8 +194,8 @@ class App
     rentals_data = @all_rentals.map do |rental|
       {
         'date' => rental.date,
-        'person' => { 'id' => rental.person.id },
-        'book' => { 'title' => rental.book.title }
+        'person' => { 'id' => rental.person.id }, # Include the person ID
+        'book' => { 'title' => rental.book.title } # Include the book title
       }
     end
   
@@ -227,14 +228,16 @@ class App
       people_data.each do |person_data|
         if person_data['type'] == 'Student'
           student = Student.new(person_data['age'], person_data['name'], parent_permission: person_data['parent_permission'])
+          student.id = person_data['id'] # Assign the person ID
           @all_people << student
         elsif person_data['type'] == 'Teacher'
           teacher = Teacher.new(person_data['age'], person_data['specialization'], person_data['name'])
+          teacher.id = person_data['id'] # Assign the person ID
           @all_people << teacher
         end
       end
     end
-  end 
+  end  
 
   def load_rentals_from_json
     if File.exist?("#{DATA_DIR}/rentals.json")

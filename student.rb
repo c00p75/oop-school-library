@@ -4,6 +4,10 @@ require_relative 'person' # importing person.rb
 class Student < Person
   attr_reader :classroom # making classroom instance variable accessible.
 
+  def id=(value)
+    @id = value
+  end
+
   def initialize(age, name = 'unknown', parent_permission: true, classroom: nil)
     super(age, name, parent_permission: parent_permission) # initialize with parent behaviour.
     @classroom = classroom # classroom instance variable to be classroom object passed as argument.

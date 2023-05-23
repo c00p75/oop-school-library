@@ -1,6 +1,7 @@
 [
   {
     "type": "Student",
+    "id": 63,
     "age": 23,
     "name": "Hope",
     "parent_permission": true,
@@ -8,8 +9,9 @@
   },
   {
     "type": "Teacher",
-    "age": 28,
-    "name": "Takudzwa",
+    "id": 77,
+    "age": 56,
+    "name": "Sibanda G",
     "parent_permission": null,
     "specialization": "Maths"
   }
