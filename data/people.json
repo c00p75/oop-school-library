@@ -14,5 +14,13 @@
     "name": "Sibanda G",
     "parent_permission": null,
     "specialization": "Maths"
+  },
+  {
+    "type": "Teacher",
+    "id": 80,
+    "age": 42,
+    "name": "Zimba",
+    "parent_permission": null,
+    "specialization": "Geography"
   }
 ]

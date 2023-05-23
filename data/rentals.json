@@ -7,5 +7,14 @@
     "book": {
       "title": "Jekanyika"
     }
+  },
+  {
+    "date": "12/12/12",
+    "person": {
+      "id": 77
+    },
+    "book": {
+      "title": "Takadii"
+    }
   }
 ]
