@@ -4,9 +4,7 @@ DATA_DIR = 'data'.freeze
 
 def save_books_to_json
   books_data = @all_books.map { |book| { 'title' => book.title, 'author' => book.author } }
-  File.open("#{DATA_DIR}/books.json", 'w') do |file|
-    file.write(JSON.pretty_generate(books_data))
-  end
+  File.write("#{DATA_DIR}/books.json", JSON.pretty_generate(books_data))
 end
 
 def save_people_to_json
@@ -21,9 +19,7 @@ def save_people_to_json
     }
   end
 
-  File.open("#{DATA_DIR}/people.json", 'w') do |file|
-    file.write(JSON.pretty_generate(people_data))
-  end
+  File.write("#{DATA_DIR}/people.json", JSON.pretty_generate(people_data))
 end
 
 def save_rentals_to_json
@@ -35,10 +31,8 @@ def save_rentals_to_json
     }
   end
 
-  File.open("#{DATA_DIR}/rentals.json", 'w') do |file|
-    file.write(JSON.pretty_generate(rentals_data))
-  end
-end  
+  File.write("#{DATA_DIR}/rentals.json", JSON.pretty_generate(rentals_data))
+end
 
 def load_data_from_json
   load_books_from_json
@@ -49,48 +43,49 @@ def load_data_from_json
 end
 
 def load_books_from_json
-  if File.exist?("#{DATA_DIR}/books.json")
-    books_json = File.read("#{DATA_DIR}/books.json")
-    books_data = JSON.parse(books_json)
-    @all_books = books_data.map { |book_data| Book.new(book_data['title'], book_data['author']) }
-  end
-end  
+  return unless File.exist?("#{DATA_DIR}/books.json")
+
+  books_json = File.read("#{DATA_DIR}/books.json")
+  books_data = JSON.parse(books_json)
+  @all_books = books_data.map { |book_data| Book.new(book_data['title'], book_data['author']) }
+end
 
 def load_people_from_json
-  if File.exist?("#{DATA_DIR}/people.json")
-    people_json = File.read("#{DATA_DIR}/people.json")
-    people_data = JSON.parse(people_json)
+  return unless File.exist?("#{DATA_DIR}/people.json")
 
-    people_data.each do |person_data|
-      if person_data['type'] == 'Student'
-        student = Student.new(person_data['age'], person_data['name'], parent_permission: person_data['parent_permission'])
-        student.id = person_data['id'] # Assign the person ID
-        @all_people << student
-      elsif person_data['type'] == 'Teacher'
-        teacher = Teacher.new(person_data['age'], person_data['specialization'], person_data['name'])
-        teacher.id = person_data['id'] # Assign the person ID
-        @all_people << teacher
-      end
+  people_json = File.read("#{DATA_DIR}/people.json")
+  people_data = JSON.parse(people_json)
+
+  people_data.each do |person_data|
+    if person_data['type'] == 'Student'
+      student = Student.new(person_data['age'], person_data['name'],
+                            parent_permission: person_data['parent_permission'])
+      student.id = person_data['id'] # Assign the person ID
+      @all_people << student
+    elsif person_data['type'] == 'Teacher'
+      teacher = Teacher.new(person_data['age'], person_data['specialization'], person_data['name'])
+      teacher.id = person_data['id'] # Assign the person ID
+      @all_people << teacher
     end
   end
-end  
+end
 
 def load_rentals_from_json
-  if File.exist?("#{DATA_DIR}/rentals.json")
-    rentals_json = File.read("#{DATA_DIR}/rentals.json")
-    rentals_data = JSON.parse(rentals_json)
+  return unless File.exist?("#{DATA_DIR}/rentals.json")
 
-    rentals_data.each do |rental_data|
-      person_id = rental_data['person']['id']
-      book_title = rental_data['book']['title']
+  rentals_json = File.read("#{DATA_DIR}/rentals.json")
+  rentals_data = JSON.parse(rentals_json)
 
-      person = @all_people.find { |person| person.id == person_id }
-      book = @all_books.find { |book| book.title == book_title }
+  rentals_data.each do |rental_data|
+    person_id = rental_data['person']['id']
+    book_title = rental_data['book']['title']
 
-      if person && book
-        rental = Rental.new(rental_data['date'], person, book)
-        @all_rentals << rental
-      end
+    person = @all_people.find { |rental_person| rental_person.id == person_id }
+    book = @all_books.find { |rental_book| rental_book.title == book_title }
+
+    if person && book
+      rental = Rental.new(rental_data['date'], person, book)
+      @all_rentals << rental
     end
   end
-end  
+end
