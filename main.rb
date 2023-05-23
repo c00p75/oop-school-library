@@ -38,11 +38,14 @@ class Main
 
   def main
     puts 'Welcome to School Library App!'
-
+  
+    @app.load_data_from_json
+  
     loop do
       option_list
       input = gets.chomp
       if input == '7'
+        @app.save_data_to_json
         puts 'Thanks for using the app!'
         break
       end

@@ -1,0 +1,16 @@
+[
+  {
+    "type": "Student",
+    "age": 23,
+    "name": "Hope",
+    "parent_permission": true,
+    "specialization": null
+  },
+  {
+    "type": "Teacher",
+    "age": 28,
+    "name": "Takudzwa",
+    "parent_permission": null,
+    "specialization": "Maths"
+  }
+]
