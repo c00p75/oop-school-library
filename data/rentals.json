@@ -1,0 +1,20 @@
+[
+  {
+    "date": "25/05/2023",
+    "person": {
+      "id": 63
+    },
+    "book": {
+      "title": "Jekanyika"
+    }
+  },
+  {
+    "date": "12/12/12",
+    "person": {
+      "id": 77
+    },
+    "book": {
+      "title": "Takadii"
+    }
+  }
+]

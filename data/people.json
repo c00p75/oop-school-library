@@ -1,0 +1,26 @@
+[
+  {
+    "type": "Student",
+    "id": 63,
+    "age": 23,
+    "name": "Hope",
+    "parent_permission": true,
+    "specialization": null
+  },
+  {
+    "type": "Teacher",
+    "id": 77,
+    "age": 56,
+    "name": "Sibanda G",
+    "parent_permission": null,
+    "specialization": "Maths"
+  },
+  {
+    "type": "Teacher",
+    "id": 80,
+    "age": 42,
+    "name": "Zimba",
+    "parent_permission": null,
+    "specialization": "Geography"
+  }
+]

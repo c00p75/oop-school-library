@@ -3,12 +3,15 @@ require_relative 'person'
 require_relative 'rental'
 require_relative 'student'
 require_relative 'teacher'
+require_relative 'preserve_data'
+require 'fileutils'
 
 class App
   def initialize
     @all_books = []
     @all_people = []
     @all_rentals = []
+    load_data_from_json
   end
 
   def list_books
@@ -37,13 +40,15 @@ class App
 
     puts 'Rented Books: '
 
+    has_rental = false
+
     @all_rentals.each do |rental|
       if rental.person.id == id
+        has_rental = true
         puts "Person: #{rental.person.name} Date: #{rental.date}, Book: '#{rental.book.title}' by #{rental.book.author}"
-      else
-        puts "Person ID: #{id} has no current rentals"
       end
     end
+    return puts "Person ID: #{id} has no current rentals" unless has_rental
   end
 
   def create_student
@@ -67,6 +72,7 @@ class App
     end
 
     @all_people << student
+
     puts 'Student created successfully.'
   end
 
@@ -120,6 +126,7 @@ class App
 
     book = Book.new(title, author)
     @all_books << book
+
     puts "Book #{title} created successfully."
   end
 
@@ -151,5 +158,15 @@ class App
     @all_rentals << rental
 
     puts 'Rental created successfully'
+  end
+
+  def save_data_to_json
+    FileUtils.mkdir_p(DATA_DIR)
+
+    save_books_to_json
+    save_people_to_json
+    save_rentals_to_json
+
+    puts 'Data saved successfully.'
   end
 end

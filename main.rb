@@ -1,5 +1,5 @@
 require_relative 'app'
-
+require_relative 'preserve_data'
 class Main
   def initialize
     @app = App.new
@@ -38,11 +38,11 @@ class Main
 
   def main
     puts 'Welcome to School Library App!'
-
     loop do
       option_list
       input = gets.chomp
       if input == '7'
+        @app.save_data_to_json
         puts 'Thanks for using the app!'
         break
       end
