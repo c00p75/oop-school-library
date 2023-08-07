@@ -1,4 +1,6 @@
 <h1><b>OOP School Library</b></h1>
+
+![UML Class Diagram](https://github.com/microverseinc/curriculum-ruby/raw/main/oop/images/uml_class_diagram.png)
 </div>
 
 # 📗 Table of Contents
